@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Happy Birthday! </title>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #272727;
+        }
+
+        #text-container {
+            background-image: url('nbp.png');
+            background-size: cover; /* Cover the entire container with the image */
+            background-repeat: no-repeat; /* Prevent image from repeating */
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: transparent; /* Set background color to transparent */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            direction: rtl; /* Right-to-left text direction */
+            white-space: pre-wrap; /* Wrap text to new lines */
+            overflow: hidden;
+        }
+
+        #typing-container {
+            max-width: 85%;
+
+        }
+
+        #text {
+            font-size: 30px;
+            color:#000000;
+            line-height:3.15;
+        }
+
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        audio {
+            display: none;
+        }
+
+        .red-text {
+        color: red;
+    }
+
+    *
+{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+
+a
+{
+    position: relative;
+    padding:20px 50px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 200px;
+    overflow: hidden;
+}
+
+a span
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 10px;
+    position:relative;
+    z-index: 1;
+    color:#fff;
+    font-size: 20px;
+    letter-spacing: 8px;
+    transition: ease 1s;
+}
+
+a span:hover
+{
+    position:relative;
+    z-index: 1;
+    color:#fff;
+    font-size: 20px;
+    letter-spacing: 10px;
+    transition: ease 0.3s;
+}
+
+
+a .liquid
+{
+    position:absolute;
+    left: 0;
+    top: -80px;
+    width:200px;
+    height: 200px;
+    background: #577fff;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+a:hover .liquid
+{
+    top: -114px;
+    transition: 0.5s;
+}
+a .liquid:before,
+a .liquid:after
+{
+    content:'';
+    position: absolute;
+    width:200%;
+    height:200%;
+    top: 0;
+    left:50%;
+    transform: translate(-50%, -75%);
+}
+
+
+a .liquid:before
+{
+    border-radius: 45%;
+    background: rgba(20,20,20,1);
+    animation: animate 15s linear infinite;
+}
+
+a .liquid:after
+{
+    border-radius:42%;
+    background: rgba(20,20,20,0.5);
+    animation: animate 10s linear infinite;
+}
+
+@keyframes animate
+{
+    0%
+    {
+        transform: translate(-50%,-75%) rotate(0deg);
+    }
+    
+    100%
+    {
+        transform: translate(-50%,-75%) rotate(360deg);
+    }
+}
+
+
+    </style>
+</head>
+<body>
+        <!-- Audio element with autoplay -->
+        <audio id="bg-music" controls>
+            <source src="https://drive.google.com/file/d/1YqEQEsqxm8DGG3HwHgIWYk-QPqr1H1WO/view?usp=drive_link" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+    <div id="text-container">
+        <div id="typing-container" style="margin-top: 30px;">
+            <p id="text"></p>
+        </div>
+    </div>
+
+    <div style="width: 100%; height:20%; display: flex; justify-content: center; align-items: center; position: absolute;">
+        <!-- Button to start audio playback -->
+        <button id="play-button" style="border:none">
+               <a>
+                <span>Start</span>
+                <div class="liquid"></div>
+              </a>
+        </button>
+    </div>
+</body>
+
+<script>
+
+const audio = document.getElementById("bg-music");
+        const playButton = document.getElementById("play-button");
+
+        playButton.addEventListener("click", function() {
+            playButton.disabled = true;
+            playButton.style.display = "none";
+            audio.play().catch(error => {
+                // Autoplay was prevented
+                console.error(error);
+            });
+            audio.volume = 0.5;
+
+
+    const text = `הייי הדססס איך את? אני מקווה שעד עכשיו היום שלך עובר מדהים😊 
+אם את קוראת את זה אז זה סימן שהיום הוא יום הולדת שלך אז דבר ראשון אני אאחל לך מזל טוב ענקי!
+אשכרה את בת 18 וזה מדהים לראות איך הזמן עובר מהר. מרגיש לי כאילו רק אתמול הכרנו והינה כבר עברו כמעט שנתיים וחצי שזה מטורף!
+אני לא חושב שאפשר להעביר במילים את כל מה שאני רוצה להגיד לך ואת כל מה שאני חושב עלייך.. אבל אני יכול לנסות :)
+אני לא יודע אם את זוכרת, אבל אמרתי לך פעם שאני לא משהו בלכתוב הרבה לאנשים ואני זוכר שמאז כשקיבלת ממני כמה מההודעות הארוכות ההן שכתבתי לך את אמרת לי בצחוק שאת חושבת שבילפתי אותך בקטע הזה. הגבתי לך על זה שרק איתך זה ככה כי איתך יש לי הרבה מה לכתוב ;)
+אז הינה ברכה ארוכה במיוחד, ביום מיוחד, לילדה אפילו עוד יותר מיוחדת שתופסת מקום ענק בלב שלי❤️
+אני רוצה לאחל לך שתהיה לך שנה מדהימה, שתמיד תחייכי, תנסי דברים חדשים, שתגשימי כל דבר שתרצי בחיים ושתזכרי שאין דבר שאת לא יכולה לעשות. את ילדה כלכך מיוחדת, חכמה, יצירתית, מוכשרת ויש לך לב ענק. את בן אדם מדהים, תמיד חושבת על אחרים ותמיד אכפת לך.
+לדבר איתך ולשמוע ממך זה משהו שתמיד עושה אותי שמח גם אם זה על הנושא הכי דפוק בעולם ואפילו כשאנחנו לא מדברים, לראות אותך שמחה, מחייכת או צוחקת פשוט תמיד עושה לי טוב בלב ומשמח אותי במקום ויכול לעשות לי את היום. כלכך נדיר למצוא אנשים כמוך, את אחת למיליארד ואני כלכך שמח שיצא לי להכיר אותך!
+אנחנו עברנו הרבה ביחד וצברנו מלא זכרונות טובים.
+הסתובבנו, נהננו, וצחקנו ואפילו כשהיו לנו ימים פחות טובים שהיינו בהם עצובים או התבאסנו אנחנו תמיד היינו שם אחד בשביל השניה ודאגנו תמיד לעודד ולגרום לשני/ה לחייך ולשמוח. 
+זה מדהים אותי לראות איך אנחנו מדברים כבר תקופה של פחות משלוש שנים ובפועל מרגיש לי שאני מכיר אותך טוב כלכך כאילו אנחנו מכירים כל החיים.
+ככל שהזמן עבר יצא לי לראות כמה אנחנו דומים וכמה דברים יש לי ולך במשותף בין אם זאת הדרך שבה אנחנו חושבים, ובין אם אלה כל הרגעים המצחיקים האלה שאמרנו את אותו המשפט באותו הזמן, הטעם שלנו במוזיקה, האהבה שלנו למכוניות וברור שיש עוד הרבה (אפילו יש לנו ליסט שלם ;) ).
+תמיד קל לקחת דברים כמובן מאליו אז אני אגיד לך ששום דבר מזה הוא לא ברור מבחינתי ואני רוצה להודות לך על כל הפעמים שעודדת אותי, שדחפת אותי קדימה בפעמים שרציתי לוותר, שתמיד היית שם בשבילי בכל פעם שהייתי צריך (וגם כשלא), תודה שגרמת לי להרגיש בטוח ושאני יכול לסמוך עלייך עם כל דבר, תודה על כל השיחות, על כל הכיף והצחוקים שהיו לי איתך, תודה לך שאת חלק מהחיים שלי ותודה על הבן אדם הטוב ועל החברה המדהימה שאת!
+אני בחיים שלי לא התחברתי ונקשרתי כלכך לבן אדם... את הופכת אותי לבן אדם כלכך שמח ואפילו היום הכי שחור שלי יכול להפוך ליום טוב רק מלדבר איתך. את הבן אדם הכי נחמד שאני מכיר ולא קיימות מילים שיכולות לתאר לך כמה אני מעריך אותך ואת כל הדברים שעשית בשבילי. את הכל בשבילי ואני מקווה שגם בעתיד הקרוב וגם בתקופה שאחרי התיכון והצבא אנחנו תמיד נישאר חברים טובים ונצבור עוד הרבה זכרונות וחוויות שלא נשכח.
+אמרתי לך את זה הרבה פעמים ואני אגיד את זה גם עוד אלף פעם אם צריך כדי שלא תשכחי לעולם, את כלכך חשובה לי ברמות שאת לא יכולה לדמיין אפילו,  my ride or die , ואני תמיד תמיד אהיה כאן בשבילך בכל זמן ובכל מצב לא משנה מה.. בין אם עצוב לך ובין אם את סתם רוצה מישהו לדבר ולצחוק איתו.
+תמיד תישארי איך שאת ואל תשתני בשביל אף אחד או אחת כי את מושלמת <span class="red-text">בדיוק איך שאת</span> ואני באמת מתכוון לזה.
+את החברה הכי טובה שיכולתי אי פעם לבקש ואני מקווה שתהני מההמשך של היום המיוחד הזה ושיהיה לך יום הולדת מושלם שלא תשכחי.
+ממני, קבו❤️
+
+דבר אחד אחרון, אני לא יודע אם את זוכרת, אבל זה גם יום ההולדת של הפלייליסט המדהים שלנו!
+אז הינה כמה שירים מהפלייליסט שתמיד מזכירים לי אותך וישר גורמים לי לחשוב עלייך :)
+
+If we got each other - Alec Benjamin
+BULLET - NF
+feels - Calvin Harris, Pharrell Wiliams, Katy Perry, Big Sean' Funk Wav
+Say you won't let go - James Arthur
+<span class="red-text">Just the way you are - Bruno Mars</span>
+Ocean drive - Duke Dumont
+Lost in japan - Shawn Mendes
+After hours - The Weeknd
+On my own - Ashes Remain
+Die for you - The Weeknd
+Tell me if you need me - Kyden
+LET EM PRAY - NF
+Never be alone - Shawn Mendes
+Smile - Juice WRLD, The Weeknd
+Get you the moon - Kina, Snøw
+Here with me - d4vd
+Walk with me - Måns Zelmerlöw, Dotter
+If you love her - Forest Blakk
+Would look perfect - Powfu, Rxseboy
+Butterflies - Abe Parker
+`;
+
+
+
+const textContainer = document.getElementById('text');
+
+
+let index = 0;
+
+function writeText() {
+textContainer.innerHTML = text.slice(0, index);
+index++;
+
+if (index > text.length) {
+    clearInterval(typingInterval); // Stop the animation
+}
+}
+
+const typingInterval = setInterval(writeText, 50); // Adjust the interval to control typing speed
+});
+
+</script>
+</html>
